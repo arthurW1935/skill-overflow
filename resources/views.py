@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .forms import ContactForm
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 # Create your views here.
 def home(request):
@@ -21,17 +24,25 @@ def machinelearning(request):
     return render(request, 'machinelearning.html')
 
 def about(request):
-    return render(request, 'about.html')
-
-def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Handle form submission (e.g., send email)
-            # You can use Django's email sending capabilities here
-            pass
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = f"Thank you for reaching out to us. Your message has been recieved. We will reply shortly.\n\nRecieved from {name}<{email}>\nMessage:\n{form.cleaned_data['message']}"
+
+            # Send email
+            send_mail(
+                f'Contact Form Submission from {name}',
+                f'Name: {name}\nEmail: {email}\nMessage: {message}',
+                settings.EMAIL_HOST_USER,  # Replace with your 'from' email
+                [email],  # Replace with a list of recipient emails
+                fail_silently=False,
+            )
+            return render(request, 'about.html', {'form': ContactForm(), 'name': name})
+
 
     else:
         form = ContactForm()
 
-    return render(request, 'contact/contact.html', {'form': form})
+    return render(request, 'about.html', {'form': form})
