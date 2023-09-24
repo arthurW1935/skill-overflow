@@ -8,6 +8,9 @@
         "source": "/(.*)",
         "destination": "/"
     }],
+    "env": {
+        "DJANGO_SETTINGS_MODULE": "skill-overflow.settings"
+    },
     "routes": [
         {
             "src": "/(.*)",
