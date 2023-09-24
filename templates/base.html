@@ -1,0 +1,69 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{% block title %} {% endblock %}</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    {% load static %} <link rel=”stylesheet” href=”{% static 'css/home.css' %}”> 
+    {%block css %}{% endblock %}
+  </head>
+  <body style="background-color: #22272e; font-family: monospace">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation-bar" style="justify-content: space-between">
+          <a class="navbar-brand" href="#">Skill Overflow</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex-grow:0;">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url "home" %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Languages
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url "python" %}">Python</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url "java" %}">Java</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url "cpp" %}">C++</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Topics
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url "webdev" %}">Web Development</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url "machinelearning" %}">Machine Learning</a>
+                </div>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url "about" %}">About Us <span class="sr-only"></span></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    
+    
+    
+    <div class="container">{% block content %}{% endblock %}</div>
+
+
+    <div style="padding: 50px"></div>
+    <div class="bg-dark" style="display: flex; justify-content: center; align-items: center; padding: 5px">
+    <p class="bg-dark text-light h5" style="margin: 0;"> Made with ♡ by the Binary Beasts team </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

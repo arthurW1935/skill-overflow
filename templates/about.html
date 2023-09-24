@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+
+{% block title %}About Us{% endblock %} 
+
+{% block content %} 
+    <div style="padding: 50px"></div>
+    <h5 class="text-light">About Us > Binary Beasts</h5>
+    <div style="padding: 20px"></div>
+    <h1 class="text-light display-1">Binary Beasts</h1>
+    <hr style="border: 3px dashed white">
+    <div style="padding: 20px"></div>
+    <p class="text-light h4">Welcome to Binary Beasts! We are a dynamic duo in the world of technology—Sourashis Sarkar and Sandip Dey. As avid tech enthusiasts and passionate learners, we're currently pursuing our undergraduate studies in Computer Science at Scaler School of Technology. Our journey in the realm of technology has been fueled by curiosity, dedication, and the desire to make a meaningful impact in this ever-evolving digital landscape. Binary Beasts is a platform where we come together to share our insights, experiences, and knowledge gained through our academic pursuits and beyond. Join us on this exciting adventure as we navigate the complexities of the tech world, conquer challenges, and strive for excellence.</p>
+    <div style="padding: 50px"></div>
+    <h1 class="text-light display-3">Send us a message</h1>
+    <hr style="border: 1px dashed white">
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    
+{% endblock %}
