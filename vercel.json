@@ -4,6 +4,10 @@
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     }],
+    "rewrites" : [{
+        "source": "/(.*)",
+        "destination": "/"
+    }],
     "routes": [
         {
             "src": "/(.*)",
